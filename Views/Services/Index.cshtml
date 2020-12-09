@@ -1,0 +1,53 @@
+﻿@model IEnumerable<Lab5.Models.Services>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Service Id
+            </th>
+            <th>
+                Customer ID
+            </th>
+            <th>
+                Service Description 
+            </th>
+            <th>
+                Product Needed
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.serviceId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.custId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.productNeeded)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.serviceId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.serviceId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.serviceId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
